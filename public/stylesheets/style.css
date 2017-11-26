@@ -1,0 +1,88 @@
+
+#wrapper{border-style: solid;
+    border-width: medium;
+    border-color: #0099cc;
+    width: 1340px;
+    height: 600px;   
+    }
+body {
+  padding: 50px;
+  font: 14px,Helvetica, Arial, sans-serif;
+}
+
+.jumbotron{
+        background-color:#0099FF !important;
+   }
+
+h2 { 
+			font-family: Arial, Helvetica, sans-serif;
+			color: white;
+			font-weight: bold; 
+			}
+			
+#pagecontents{
+    
+    padding: 25px;
+    font-weight: bold;
+    font-size:150%;
+}
+
+#commentdetails{
+	border-style: solid;
+	border-color: white;
+    width: 900px;
+    height: 150px;   
+}
+
+h3 { 
+			font-family: Arial, Helvetica, sans-serif;
+			color: black;
+			font-weight: bold; 
+			
+			}
+			
+	#btn_tune_in{
+	background-color: #a6cc33; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    margin-top:60px;
+    margin-left: 500px;
+    font-weight: bold;
+	}
+	
+	#btn_tune_in:hover {
+    background-color: #59b300 ;
+}
+
+#btn_tune_out{
+	background-color: #b35900;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top:60px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+  
+    #btn_tune_out:hover {
+       background-color: #b32d00;
+    }
+
+
+
+			
+
+			

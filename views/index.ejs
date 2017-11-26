@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stadium Vision and Live Scorer</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <div id = "wrapper">
+  <div class="jumbotron text-center">
+  <div class="container">
+      <h2>Live Score</h2>
+  </div> <!--jumbotron div-->
+   </div> <!--container  div-->
+   
+   
+  <div id = "pagecontents">
+    
+    <p>Live Sporting Event: Cricket Match</p>
+      <div id= "commentdetails"> 
+      <p id="score"> </p>
+      <p id="commentary"> </p>
+      </div>
+  <div id="btns_div" style="align:center;">
+   <button type="button" id ="btn_tune_in" onclick="ws_connect()">Tune In !!</button> 
+    <button type="button" id ="btn_tune_out" onclick="ws_disconnect()">Tune Out !!</button> 
+  </div>
+  </div><!--pagecontents-->
+  </div> <!--wrapper div-->
+ 
+ 
+  
+  
+<script>
+  var socket = io();
+  
+  function ws_connect() {
+  
+  console.log("Connecting");
+  socket.connect("127.0.0.1", {'forceNew': true});
+  socket.on('connect', function(){
+  console.log('a user connected');
+  });
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  socket.on('Current Score:', function(msg){
+  	console.log("msg is ", msg);
+  	var score = msg.split('Commentary:')[0];
+  	var commentary = msg.split('Commentary:')[1];
+    console.log('Current Score: ' + score  + 'Commentary:' + commentary);
+    var score_elem = document.getElementById("score");
+    var commentary_elem = document.getElementById("commentary");
+    score_elem.innerHTML = 'Current Score: ' + score;
+    commentary_elem.innerHTML = 'Commentary  : ' + commentary;
+  });
+  socket.on('Commentary:', function(msg){
+    console.log('Current Score: ' + msg);
+  });
+  }
+  
+  function ws_disconnect() {
+  console.log("Disconnecting");
+  socket.disconnect();
+  var score_elem = document.getElementById("score");
+  var commentary_elem = document.getElementById("commentary");
+  score_elem.innerHTML = '';
+  commentary_elem.innerHTML = '';
+  }
+
+</script>
+
+  </body>
+</html>
